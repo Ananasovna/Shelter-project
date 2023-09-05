@@ -1,0 +1,292 @@
+@import "./nullstyle.scss";
+
+@font-face {
+  font-family: 'Arial Regular';
+  src: url('ArialMT.eot');
+  src: url('ArialMT.eot?#iefix') format('embedded-opentype'),
+  url('../../assets/fonts/ArialMT.woff') format('woff'),
+  url('../../assets/fonts/ArialMT.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  }
+
+@font-face {
+  font-family: 'Arial Italic';
+  src: url('Arial-ItalicMT.eot');
+  src: url('Arial-ItalicMT.eot?#iefix') format('embedded-opentype'),
+  url('../../assets/fonts/Arial-ItalicMT.woff') format('woff'),
+  url('../../assets/fonts/Arial-ItalicMT.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('Georgia.eot');
+  src: url('Georgia.eot?#iefix') format('embedded-opentype'),
+  url('../../assets/fonts/Georgia.woff') format('woff'),
+  url('../../assets/fonts/Georgia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$color-dark-s: #CDCDCD;
+$color-dark-m: #B2B2B2;
+$color-dark-l: #545454;
+$color-dark-xl: #4C4C4C;
+$color-dark-3xl: #292929;
+$color-primary: #F1CDB3;
+$color-primary-light: #FDDCC4;
+$color-light-s: #FAFAFA;
+$color-light-l: #F6F6F6;
+$color-light-xl: #FFFFFF;
+
+@mixin button($height, $width, $bg-color) {
+  height: $height;
+  width: $width;
+  background: $bg-color;
+  border: 2px solid $color-primary;
+  border-radius: 26px;
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  font-size: 17px;
+  letter-spacing: 1px;
+  color: $color-dark-3xl;
+  cursor: pointer;
+}
+
+%button-hovered {
+    background: $color-primary-light;
+    border: 2px solid $color-primary-light;
+}
+
+%flex-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+%h4 {
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: $color-dark-m;
+}
+
+a {
+  color: $color-dark-3xl;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  height: auto;
+  margin: auto;
+  font-family: 'Arial', Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+
+.title {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  font-size: 35px;
+  line-height: 45.5px;
+  color: $color-dark-l;
+  letter-spacing: 0.06em;
+}
+
+.text {
+  font-family: 'Arial', Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.header, .pets, .footer {
+  padding: 80px 40px 100px;
+}
+
+.header-container {
+  position: sticky;
+  top:  0px;
+  .header {
+    @extend %flex-block;
+    align-items: center;
+    padding: 30px 40px;
+    margin: 0;
+    background: $color-light-xl;
+    color: $color-dark-l;
+      .header-logo {
+        @extend %flex-block;
+        flex-direction: column;
+        padding: 0;
+        text-align: right;
+        letter-spacing: 1.35px;
+        &__title {
+          font-size: 32px;
+          line-height: 100%;
+        }
+        &__link {
+          color: $color-dark-l;
+        }  
+        &__subtitle {
+          font-size: 13px;
+          margin-top: 13px;
+          line-height: 15px;
+          color: $color-dark-3xl;
+        }
+      }
+      .header-nav {
+        @extend %flex-block;
+        width: 443px; 
+        line-height: 160%;
+        &__link {
+          color: $color-dark-l;
+        }
+        &__link:hover {
+          color: $color-dark-3xl;
+        }
+        &__link:active:after {
+          color: $color-light-xl;
+          content: "";
+          display: block;
+          height: 3px;
+          width: 100%;
+          background: $color-primary;
+          margin-top: 2px;
+        }
+        &__link_choosed:after {
+          color: $color-light-xl;
+          content: "";
+          display: block;
+          height: 3px;
+          width: 100%;
+          background: $color-primary;
+          margin-top: 2px;
+        }
+      }
+  }
+}
+
+
+.pets {
+  background: $color-light-l;
+  .pets-container {
+    @extend %flex-block;
+    flex-direction: column;
+    align-items: center;
+    height: 1162px;
+    .pets__title {
+      text-align: center;
+    }
+    
+      &__button {
+        @include button(52px, 52px, none);
+        @extend %flex-block;
+        justify-content: center;
+        align-items: center;
+      }
+      &__button:hover {
+        @extend %button-hovered;
+      }
+
+      .cards-conatiner {
+        @extend %flex-block;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px 20px;
+        height: 930px;
+        width: 100%;
+        .pets-card {
+          @extend %flex-block;
+          flex-direction: column;
+          align-items: center;
+          height: 435px;
+          padding-bottom: 30px;
+          border: none;
+          border-radius: 12px;
+          background: $color-light-s;
+    
+          cursor: pointer;
+          &__title {
+            font-size: 20px;
+            letter-spacing: 1px;
+          }
+          &__button {
+            @include button(52px, 187px, none);
+          }
+        }
+        .pets-card:hover {
+          background: $color-light-xl;
+          .pets-card__button {
+            background: $color-primary-light;
+            border: $color-primary-light;
+          }
+        }
+      }
+
+      .buttons-container {
+        @extend %flex-block;
+        justify-content: space-between;
+        width: 340px;
+        .pets__button {
+          @include button(52px, 52px, none);
+          font-size: 20px;
+        }
+        .pets__button_active {
+          background: $color-primary;
+        }
+        .pets__button_active:hover {
+          @extend %button-hovered;
+        }
+        .pets__button_inactive {
+          color: $color-dark-s;
+          border: 2px solid $color-dark-s;
+        }
+        .pets__button_inactive:hover {
+          background: none;
+          color: $color-dark-s;
+          border: 2px solid $color-dark-s;
+        }
+      }
+    
+
+
+  }
+}
+
+.footer {
+  @extend %flex-block;
+  padding: 40px 40px 1.5px;
+  background: url('../../assets/images/footer-gradient-background.png');
+  .footer-container {
+    @extend %flex-block;
+    flex-direction: column;
+    height: 250px;
+    color: $color-primary;
+    padding-top: 16px;
+    .footer__title {
+      color: $color-light-xl;
+    }
+    .footer-content {
+      @extend %h4;
+      @extend %flex-block;
+      justify-content: flex-start;
+      align-items: center;
+      font-family: 'Georgia', 'Times New Roman', Times, serif;
+      .footer__text {
+        text-align: left;
+        margin-left: 20px;
+        color: $color-primary;
+      }
+    }
+  }
+  .footer__img {
+    display: block;
+  }
+}
